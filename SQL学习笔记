@@ -36,6 +36,10 @@ SELECT user_guid
 FROM users
 WHERE state IS NOT NULL;
 
+提取日期中的月份
+EXTRACT(MONTH from [fill in column name here, and don’t use the brackets]) 
+MAX(CASE WHEN EXTRACT(MONTH from saledate)=12 THEN saledate END) AS last_day_in_Dec 
+
 %%sql
 SELECT dog_guid, subcategory_name, test_name
 FROM reviews
@@ -172,3 +176,7 @@ LEFT JOIN (SELECT DISTINCT d.user_guid, d.dog_guid, d.breed
 FROM dogs d) AS DistictDUsersID
 ON DistinctUUsersID.user_guid=DistictDUsersID.user_guid
 GROUP BY DistinctUUsersID.user_guid;
+
+MAX(CASE WHEN EXTRACT(MONTH from saledate)=12
+ THEN saledate
+ END) AS last_day_in_Dec 
